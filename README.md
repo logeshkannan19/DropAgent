@@ -7,6 +7,11 @@
   <img src="https://img.shields.io/badge/FastAPI-0.109.0-green.svg" alt="FastAPI">
   <img src="https://img.shields.io/badge/Docker-Ready-blue.svg" alt="Docker">
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">
+  <a href="https://railway.app/new/template?template=https://github.com/logeshkannan19/DropAgent"><img src="https://img.shields.io/badge/Deploy-Railway-blue.svg" alt="Deploy"></a>
+</p>
+
+<p align="center">
+  <a href="https://dropshipping-ai-agent.up.railway.app/docs"><strong>🚀 Live Demo</strong></a>
 </p>
 
 ---
@@ -685,6 +690,55 @@ pytest tests/test_product_research.py -v
 
 ## 🚢 Deployment
 
+### One-Click Deploy to Cloud
+
+[![Deploy to Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/logeshkannan19/DropAgent)
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/logeshkannan19/DropAgent)
+
+[![Deploy to Fly.io](https://img.shields.io/badge/Fly.io-Deploy-blue.svg)](https://fly.io/launch)
+
+---
+
+### Cloud Platform Deployment
+
+#### Railway (Recommended - Free Tier)
+
+1. Go to [Railway.app](https://railway.app)
+2. Click "New Project" → "Deploy from GitHub"
+3. Select `DropAgent` repository
+4. Railway auto-detects Python
+5. Add environment variables (optional)
+6. Click "Deploy Now"
+
+**Live URL:** `https://dropshipping-ai-agent.up.railway.app`
+
+#### Render (Free Tier)
+
+1. Go to [Render.com](https://render.com)
+2. Click "New" → "Web Service"
+3. Connect GitHub repo
+4. Settings:
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `uvicorn backend.api.main:app --host 0.0.0.0 --port $PORT`
+5. Click "Create Web Service"
+
+#### Fly.io (Free Tier)
+
+```bash
+# Install flyctl
+curl -L https://fly.io/install.sh | sh
+
+# Launch app
+fly launch --image python:3.11-slim
+
+# Deploy
+fly deploy
+fly apps open
+```
+
+---
+
 ### Docker Deployment
 
 ```bash
@@ -696,6 +750,23 @@ docker-compose up -d
 
 # View logs
 docker-compose logs -f api
+```
+
+---
+
+### Local Development
+
+```bash
+# Clone and setup
+git clone https://github.com/logeshkannan19/DropAgent.git
+cd DropAgent
+
+# Run with Docker
+docker-compose up --build
+
+# OR Run manually
+pip install -r requirements.txt
+uvicorn backend.api.main:app --reload
 ```
 
 ---

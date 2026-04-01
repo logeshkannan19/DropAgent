@@ -1,0 +1,30 @@
+{
+  "name": "dropshipping-ai-agent",
+  "description": "AI-powered autonomous dropshipping business system",
+  "repository": "https://github.com/logeshkannan19/DropAgent",
+  "logo": "https://img.icons8.com/fluency/96/artificial-intelligence.png",
+  "keywords": ["dropshipping", "ai", "automation", "ecommerce", "fastapi", "ml"],
+  "stack": "python",
+  "category": "Business Tools",
+  "env": {
+    "SECRET_KEY": {
+      "description": "JWT secret key for authentication",
+      "required": false
+    },
+    "DATABASE_URL": {
+      "description": "Database connection URL",
+      "value": "sqlite+aiosqlite:///./data/dropshipping.db",
+      "required": false
+    },
+    "LOG_LEVEL": {
+      "description": "Logging level",
+      "value": "INFO",
+      "required": false
+    }
+  },
+  "success_url": "/docs",
+  "scripts": {
+    "predeploy": "pip install -r requirements.txt",
+    "start": "uvicorn backend.api.main:app --host 0.0.0.0 --port 8000"
+  }
+}
