@@ -11,95 +11,139 @@
 
 ---
 
-## Table of Contents
+## 🎥 Demo Video
 
-- [Overview](#overview)
-- [Features](#features)
-- [Architecture](#architecture)
-- [Quick Start](#quick-start)
-- [API Documentation](#api-documentation)
-- [Configuration](#configuration)
-- [Development](#development)
-- [Testing](#testing)
-- [Deployment](#deployment)
-- [License](#license)
+[![DropShipping AI Agent Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+*Click to watch the full demo video*
 
 ---
 
-## Overview
+## 📸 Screenshots
 
-DropShipping AI Agent is a production-ready, end-to-end automation system for managing a dropshipping business using artificial intelligence. It leverages modern AI techniques to research products, predict demand, optimize pricing, and automate store operations.
+### Dashboard Overview
+![Dashboard](screenshots/dashboard.png)
 
----
+### AI Agent Pipeline
+![Agent Pipeline](screenshots/agent-pipeline.png)
 
-## Features
+### Product Analytics
+![Analytics](screenshots/analytics.png)
 
-### Core AI Agents
-
-| Agent | Description |
-|-------|-------------|
-| **Product Research Agent** | Scrapes and analyzes trending products from multiple sources |
-| **Demand Prediction Model** | ML-based demand forecasting using ensemble methods |
-| **Pricing Optimization Agent** | Rule-based and dynamic pricing strategies |
-| **AI Decision Agent** | Orchestrates the entire pipeline with planning loop |
-
-### Business Services
-
-- **Supplier Management**: Mock supplier API with inventory and shipping tracking
-- **Store Automation**: Mock Shopify integration for product management
-- **Analytics Dashboard**: Real-time metrics on revenue, profit, and conversions
-
-### Technical Features
-
-- **Async Architecture**: Built with FastAPI and asyncio for high performance
-- **Modular Design**: Clean separation of concerns with service layers
-- **Type Safety**: Full Pydantic validation on all inputs/outputs
-- **Production Ready**: Docker support, logging, error handling
-- **Testing**: Comprehensive unit and integration tests
+### API Documentation
+![API Docs](screenshots/api-docs.png)
 
 ---
 
-## Architecture
+## 🔄 How It Works
 
 ```
-DropShipping-AI-Agent/
-├── backend/
-│   ├── api/
-│   │   └── v1/
-│   │       └── endpoints/       # API endpoints
-│   ├── core/
-│   │   ├── config.py           # Configuration management
-│   │   ├── database.py         # Database models & session
-│   │   ├── security.py          # Authentication & JWT
-│   │   └── dependencies.py     # FastAPI dependencies
-│   ├── agents/
-│   │   ├── product_research/    # Product research agent
-│   │   ├── pricing/            # Pricing optimization
-│   │   └── ai_decision/         # Core AI decision agent
-│   ├── services/                # Business logic services
-│   ├── scripts/                 # Utility scripts
-│   └── utils/                   # Helper utilities
-├── frontend/
-│   └── app.py                  # Streamlit dashboard
-├── tests/
-│   ├── unit/                   # Unit tests
-│   └── integration/             # Integration tests
-├── data/                       # Data storage
-├── docker-compose.yml          # Docker orchestration
-├── Dockerfile                  # Container image
-└── requirements.txt            # Python dependencies
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         DROPSHIPPING AI AGENT SYSTEM                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+                                    ┌───────────────┐
+                                    │   START       │
+                                    └───────┬───────┘
+                                            │
+                                            ▼
+                    ┌───────────────────────────────────────────┐
+                    │     1️⃣  PRODUCT RESEARCH AGENT            │
+                    │  ┌─────────────────────────────────────┐ │
+                    │  │  • Scrape trending products          │ │
+                    │  │  • Extract: name, price, rating     │ │
+                    │  │  • Source: AliExpress, Amazon, etc  │ │
+                    │  │  • Mock + Real scraping support      │ │
+                    │  └─────────────────────────────────────┘ │
+                    └───────────────────┬───────────────────────┘
+                                        │
+                                        ▼
+                    ┌───────────────────────────────────────────┐
+                    │     2️⃣  DEMAND PREDICTION MODEL          │
+                    │  ┌─────────────────────────────────────┐ │
+                    │  │  • ML Model: RandomForest/XGBoost   │ │
+                    │  │  • Features: price, rating, reviews │ │
+                    │  │  • Output: demand score (0-1)        │ │
+                    │  │  • Training data: 1000+ samples      │ │
+                    │  └─────────────────────────────────────┘ │
+                    └───────────────────┬───────────────────────┘
+                                        │
+                                        ▼
+                    ┌───────────────────────────────────────────┐
+                    │     3️⃣  PRODUCT SELECTION                │
+                    │  ┌─────────────────────────────────────┐ │
+                    │  │  • Multi-factor scoring              │ │
+                    │  │  • Demand score (40%)                │ │
+                    │  │  • Rating (20%)                      │ │
+                    │  │  • Popularity (20%)                   │ │
+                    │  │  • Profitability (20%)               │ │
+                    │  └─────────────────────────────────────┘ │
+                    └───────────────────┬───────────────────────┘
+                                        │
+                                        ▼
+                    ┌───────────────────────────────────────────┐
+                    │     4️⃣  PRICING OPTIMIZATION              │
+                    │  ┌─────────────────────────────────────┐ │
+                    │  │  • 5 Pricing Strategies:             │ │
+                    │  │    - Cost-Plus: cost + margin      │ │
+                    │  │    - Competitive: beat competitors  │ │
+                    │  │    - Premium: high demand, high $   │ │
+                    │  │    - Penetration: low price entry   │ │
+                    │  │    - Dynamic: RL-based (placeholder)│ │
+                    │  │  • Formula: price = cost + margin   │ │
+                    │  │    + competitor adjustment           │ │
+                    │  └─────────────────────────────────────┘ │
+                    └───────────────────┬───────────────────────┘
+                                        │
+                                        ▼
+                    ┌───────────────────────────────────────────┐
+                    │     5️⃣  STORE AUTOMATION (Shopify)        │
+                    │  ┌─────────────────────────────────────┐ │
+                    │  │  • create_product()                │ │
+                    │  │  • update_price()                  │ │
+                    │  │  • publish_product()                │ │
+                    │  │  • Mock API (no real keys needed)   │ │
+                    │  └─────────────────────────────────────┘ │
+                    └───────────────────┬───────────────────────┘
+                                        │
+                                        ▼
+                    ┌───────────────────────────────────────────┐
+                    │     6️⃣  ANALYTICS & TRACKING              │
+                    │  ┌─────────────────────────────────────┐ │
+                    │  │  • Revenue tracking                 │ │
+                    │  │  • Profit margins                   │ │
+                    │  │  • Conversion rates                 │ │
+                    │  │  • Top products                     │ │
+                    │  │  • Daily/Weekly/Monthly stats       │ │
+                    │  └─────────────────────────────────────┘ │
+                    └───────────────────────────────────────────┘
+                                        │
+                                        ▼
+                                ┌───────────────┐
+                                │     END       │
+                                └───────────────┘
+```
+
+### AI Decision Loop
+
+```
+┌─────────┐     ┌─────────┐     ┌─────────────┐     ┌──────────┐
+│  PLAN   │────▶│ EXECUTE │────▶│  EVALUATE   │────▶│ IMPROVE  │
+└─────────┘     └─────────┘     └─────────────┘     └──────────┘
+     ▲                                                           │
+     └───────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Using Docker (Recommended)
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/dropshipping-ai-agent.git
-cd dropshipping-ai-agent
+git clone https://github.com/logeshkannan19/DropAgent.git
+cd DropAgent
 
 # Start all services
 docker-compose up --build
@@ -124,8 +168,11 @@ pip install -r requirements.txt
 # Configure environment
 cp .env.example .env
 
-# Initialize database
+# Initialize database with sample data
 python scripts/seed_data.py
+
+# Train ML model
+python scripts/train_model.py
 
 # Run the API
 uvicorn backend.api.main:app --reload
@@ -136,7 +183,87 @@ streamlit run frontend/app.py
 
 ---
 
-## API Documentation
+## 📊 Real Dataset Example
+
+### Sample Products Dataset
+
+The system includes a real-world dataset with 50+ products across multiple categories:
+
+```json
+{
+  "products": [
+    {
+      "name": "Wireless Bluetooth Earbuds Pro",
+      "category": "Electronics",
+      "cost_price": 15.99,
+      "selling_price": 49.99,
+      "rating": 4.5,
+      "review_count": 1250,
+      "estimated_orders_monthly": 500,
+      "demand_score": 0.85,
+      "supplier": {
+        "id": "SUP-001",
+        "name": "Global Trade Co",
+        "rating": 4.8,
+        "shipping_days": 12
+      },
+      "profit_margin": 67.99,
+      "competitors_count": 45,
+      "trending": true
+    },
+    {
+      "name": "Premium Yoga Mat Non-Slip",
+      "category": "Sports",
+      "cost_price": 12.99,
+      "selling_price": 34.99,
+      "rating": 4.7,
+      "review_count": 2100,
+      "estimated_orders_monthly": 800,
+      "demand_score": 0.78,
+      "supplier": {
+        "id": "SUP-003",
+        "name": "Quality Goods Inc",
+        "rating": 4.9,
+        "shipping_days": 15
+      },
+      "profit_margin": 62.87,
+      "competitors_count": 120,
+      "trending": true
+    }
+  ]
+}
+```
+
+### Demand Prediction Example
+
+Input features for the ML model:
+
+```python
+features = {
+    "category": "Electronics",
+    "price": 35.99,
+    "rating": 4.5,
+    "review_count": 200,
+    "competitor_count": 25,
+    "supplier_rating": 4.7,
+    "shipping_days": 12
+}
+
+# Output
+{
+    "demand_score": 0.72,
+    "confidence": 0.85,
+    "factors": {
+        "rating_impact": "positive",
+        "review_impact": "medium",
+        "competition_impact": "low"
+    }
+}
+```
+
+---
+
+## 💻 API Usage
 
 ### Base URL
 
@@ -144,68 +271,27 @@ streamlit run frontend/app.py
 http://localhost:8000/api/v1
 ```
 
-### Endpoints Overview
-
-#### Health Check
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/health` | Health check |
-| GET | `/health/ready` | Readiness probe |
-| GET | `/health/live` | Liveness probe |
-
-#### Products
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/products` | List products |
-| POST | `/products` | Create product |
-| GET | `/products/{id}` | Get product |
-| PATCH | `/products/{id}` | Update product |
-| DELETE | `/products/{id}` | Delete product |
-
-#### Analytics
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/analytics` | Get metrics |
-| GET | `/analytics/top-products` | Top products |
-| GET | `/analytics/daily-stats` | Daily statistics |
-| GET | `/analytics/categories` | Category performance |
-| GET | `/analytics/summary` | Full summary |
-
-#### AI Agent
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/agent/run` | Run agent pipeline |
-| GET | `/agent/performance` | Agent metrics |
-| GET | `/agent/decisions` | Recent decisions |
-| GET | `/agent/runs` | Run history |
-
-#### Suppliers
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/suppliers` | List suppliers |
-| GET | `/suppliers/{id}` | Supplier details |
-| GET | `/suppliers/{id}/products` | Supplier products |
-| POST | `/suppliers/order` | Place order |
-
-#### Store
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/store/products` | List store products |
-| POST | `/store/products` | Create product |
-| POST | `/store/products/{id}/publish` | Publish product |
-| POST | `/store/products/{id}/order` | Simulate order |
-| GET | `/store/stats` | Store statistics |
-
-### Example Request
+### 1. Health Check
 
 ```bash
-# Run AI Agent Pipeline
+# Check API health
+curl -X GET http://localhost:8000/api/v1/health
+```
+
+**Response:**
+```json
+{
+  "status": "healthy",
+  "version": "1.0.0",
+  "environment": "development",
+  "database_connected": true,
+  "timestamp": "2024-01-15T10:30:00"
+}
+```
+
+### 2. Run AI Agent Pipeline
+
+```bash
 curl -X POST http://localhost:8000/api/v1/agent/run \
   -H "Content-Type: application/json" \
   -d '{
@@ -215,9 +301,359 @@ curl -X POST http://localhost:8000/api/v1/agent/run \
   }'
 ```
 
+**Response:**
+```json
+{
+  "run_id": 1,
+  "status": "completed",
+  "products_analyzed": 12,
+  "products_selected": 5,
+  "products_published": 5,
+  "revenue_potential": 245.50,
+  "execution_time": 2.35,
+  "phases": {
+    "research": {"products_found": 12},
+    "analysis": {"products_analyzed": 12},
+    "selection": {"products_selected": 5},
+    "pricing": {"products_priced": 5},
+    "publishing": {"products_published": 5}
+  },
+  "message": "Analyzed 12 products, selected 5, published 5"
+}
+```
+
+### 3. Predict Demand
+
+```bash
+curl -X POST http://localhost:8000/api/v1/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "category": "Electronics",
+    "price": 29.99,
+    "rating": 4.5,
+    "review_count": 500,
+    "competitor_count": 30,
+    "supplier_rating": 4.7,
+    "shipping_days": 10
+  }'
+```
+
+**Response:**
+```json
+{
+  "demand_score": 0.72,
+  "confidence": 0.85,
+  "factors": {
+    "rating_impact": "positive",
+    "review_impact": "high",
+    "competition_impact": "medium"
+  }
+}
+```
+
+### 4. Optimize Price
+
+```bash
+curl -X POST http://localhost:8000/api/v1/optimize-price \
+  -H "Content-Type: application/json" \
+  -d '{
+    "cost_price": 15.99,
+    "competitor_prices": [29.99, 34.99, 32.99, 38.99],
+    "demand_score": 0.75
+  }'
+```
+
+**Response:**
+```json
+{
+  "optimal_price": 35.99,
+  "margin_percent": 55.5,
+  "estimated_profit": 20.00,
+  "strategy": "competitive",
+  "competitor_analysis": {
+    "min": 29.99,
+    "max": 38.99,
+    "avg": 34.24
+  },
+  "recommendations": [
+    "High demand justifies premium pricing",
+    "Price is competitive in market"
+  ]
+}
+```
+
+### 5. List Products
+
+```bash
+curl -X GET "http://localhost:8000/api/v1/products?limit=10&category=Electronics"
+```
+
+**Response:**
+```json
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Bluetooth Earbuds",
+      "category": "Electronics",
+      "cost_price": 15.99,
+      "selling_price": 49.99,
+      "rating": 4.5,
+      "demand_score": 0.85,
+      "is_published": true
+    }
+  ],
+  "total": 25,
+  "skip": 0,
+  "limit": 10
+}
+```
+
+### 6. Get Analytics
+
+```bash
+curl -X GET "http://localhost:8000/api/v1/analytics?days=30"
+```
+
+**Response:**
+```json
+{
+  "total_revenue": 15420.50,
+  "total_profit": 8540.25,
+  "total_sales": 425,
+  "total_products": 48,
+  "active_products": 42,
+  "published_products": 35,
+  "conversion_rate": 3.2,
+  "avg_order_value": 36.28,
+  "profit_margin": 55.4
+}
+```
+
+### 7. Python Client Example
+
+```python
+import requests
+import json
+
+BASE_URL = "http://localhost:8000/api/v1"
+
+class DropShippingClient:
+    """Python client for DropShipping AI Agent API."""
+    
+    def __init__(self, base_url: str = BASE_URL):
+        self.base_url = base_url
+        self.session = requests.Session()
+    
+    def run_agent_pipeline(
+        self,
+        max_products: int = 10,
+        min_demand_score: float = 0.5,
+        auto_publish: bool = True
+    ) -> dict:
+        """Run the AI agent pipeline."""
+        response = self.session.post(
+            f"{self.base_url}/agent/run",
+            json={
+                "max_products": max_products,
+                "min_demand_score": min_demand_score,
+                "auto_publish": auto_publish
+            }
+        )
+        response.raise_for_status()
+        return response.json()
+    
+    def predict_demand(
+        self,
+        category: str,
+        price: float,
+        rating: float,
+        review_count: int,
+        competitor_count: int,
+        supplier_rating: float,
+        shipping_days: int
+    ) -> dict:
+        """Predict demand for a product."""
+        response = self.session.post(
+            f"{self.base_url}/predict",
+            json={
+                "category": category,
+                "price": price,
+                "rating": rating,
+                "review_count": review_count,
+                "competitor_count": competitor_count,
+                "supplier_rating": supplier_rating,
+                "shipping_days": shipping_days
+            }
+        )
+        response.raise_for_status()
+        return response.json()
+    
+    def optimize_price(
+        self,
+        cost_price: float,
+        competitor_prices: list,
+        demand_score: float
+    ) -> dict:
+        """Optimize product pricing."""
+        response = self.session.post(
+            f"{self.base_url}/optimize-price",
+            json={
+                "cost_price": cost_price,
+                "competitor_prices": competitor_prices,
+                "demand_score": demand_score
+            }
+        )
+        response.raise_for_status()
+        return response.json()
+    
+    def get_analytics(self, days: int = 7) -> dict:
+        """Get analytics data."""
+        response = self.session.get(
+            f"{self.base_url}/analytics",
+            params={"days": days}
+        )
+        response.raise_for_status()
+        return response.json()
+
+
+# Usage Example
+if __name__ == "__main__":
+    client = DropShippingClient()
+    
+    # Run AI Agent
+    result = client.run_agent_pipeline(max_products=10)
+    print(f"Agent completed: {result['products_selected']} products selected")
+    
+    # Predict demand
+    demand = client.predict_demand(
+        category="Electronics",
+        price=29.99,
+        rating=4.5,
+        review_count=500,
+        competitor_count=30,
+        supplier_rating=4.7,
+        shipping_days=10
+    )
+    print(f"Demand score: {demand['demand_score']}")
+    
+    # Get analytics
+    analytics = client.get_analytics(days=30)
+    print(f"Revenue: ${analytics['total_revenue']}")
+```
+
+### 8. JavaScript/Node.js Example
+
+```javascript
+const API_BASE = 'http://localhost:8000/api/v1';
+
+class DropShippingClient {
+    constructor(baseUrl = API_BASE) {
+        this.baseUrl = baseUrl;
+    }
+
+    async request(endpoint, options = {}) {
+        const response = await fetch(`${this.baseUrl}${endpoint}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers,
+            },
+            ...options,
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    }
+
+    async runAgentPipeline(maxProducts = 10, minDemandScore = 0.5) {
+        return this.request('/agent/run', {
+            method: 'POST',
+            body: JSON.stringify({
+                max_products: maxProducts,
+                min_demand_score: minDemandScore,
+                auto_publish: true
+            }),
+        });
+    }
+
+    async predictDemand(productData) {
+        return this.request('/predict', {
+            method: 'POST',
+            body: JSON.stringify(productData),
+        });
+    }
+
+    async getAnalytics(days = 7) {
+        return this.request(`/analytics?days=${days}`);
+    }
+}
+
+// Usage
+const client = new DropShippingClient();
+const result = await client.runAgentPipeline(10);
+console.log(`Selected ${result.products_selected} products`);
+```
+
 ---
 
-## Configuration
+## 📁 API Documentation
+
+### Full Endpoints List
+
+#### Health Check
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/health` | Health check |
+| GET | `/health/ready` | Readiness probe |
+| GET | `/health/live` | Liveness probe |
+
+#### Products
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/products` | List products |
+| POST | `/products` | Create product |
+| GET | `/products/{id}` | Get product |
+| PATCH | `/products/{id}` | Update product |
+| DELETE | `/products/{id}` | Delete product |
+
+#### Analytics
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/analytics` | Get metrics |
+| GET | `/analytics/top-products` | Top products |
+| GET | `/analytics/daily-stats` | Daily statistics |
+| GET | `/analytics/categories` | Category performance |
+| GET | `/analytics/summary` | Full summary |
+
+#### AI Agent
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/agent/run` | Run agent pipeline |
+| GET | `/agent/performance` | Agent metrics |
+| GET | `/agent/decisions` | Recent decisions |
+| GET | `/agent/runs` | Run history |
+
+#### Suppliers
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/suppliers` | List suppliers |
+| GET | `/suppliers/{id}` | Supplier details |
+| GET | `/suppliers/{id}/products` | Supplier products |
+| POST | `/suppliers/order` | Place order |
+
+#### Store
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/store/products` | List store products |
+| POST | `/store/products` | Create product |
+| POST | `/store/products/{id}/publish` | Publish product |
+| POST | `/store/products/{id}/order` | Simulate order |
+| GET | `/store/stats` | Store statistics |
+
+---
+
+## ⚙️ Configuration
 
 ### Environment Variables
 
@@ -230,41 +666,9 @@ curl -X POST http://localhost:8000/api/v1/agent/run \
 | `REDIS_ENABLED` | `false` | Enable Redis caching |
 | `ENVIRONMENT` | `development` | Environment mode |
 
-### Pricing Configuration
-
-```python
-# Default margins
-PRICING_DEFAULT_MARGIN = 0.30  # 30%
-PRICING_MIN_MARGIN = 0.15     # 15%
-PRICING_MAX_MARGIN = 0.60     # 60%
-```
-
 ---
 
-## Development
-
-### Project Structure
-
-```
-backend/
-├── api/v1/endpoints/     # API route handlers
-├── core/                 # Core application logic
-├── agents/              # AI agent implementations
-├── services/            # Business logic services
-├── scripts/             # Utility scripts
-└── utils/               # Helper functions
-```
-
-### Adding New Features
-
-1. **New API Endpoint**: Add to `backend/api/v1/endpoints/`
-2. **New Agent**: Add to `backend/agents/`
-3. **New Service**: Add to `backend/services/`
-4. **Update Router**: Register in `backend/api/v1/router.py`
-
----
-
-## Testing
+## 🧪 Testing
 
 ```bash
 # Run all tests
@@ -274,15 +678,12 @@ pytest tests/ -v
 pytest tests/ -v --cov=backend --cov-report=html
 
 # Run specific test file
-pytest tests/unit/test_product_research.py -v
-
-# Run integration tests
-pytest tests/integration/ -v
+pytest tests/test_product_research.py -v
 ```
 
 ---
 
-## Deployment
+## 🚢 Deployment
 
 ### Docker Deployment
 
@@ -295,32 +696,13 @@ docker-compose up -d
 
 # View logs
 docker-compose logs -f api
-
-# Scale API
-docker-compose up -d --scale api=3
 ```
 
-### Production Checklist
-
-- [ ] Set `SECRET_KEY` to a secure value
-- [ ] Configure `DATABASE_URL` for production database
-- [ ] Enable Redis for caching (optional)
-- [ ] Set `ENVIRONMENT=production`
-- [ ] Configure CORS origins
-- [ ] Set up monitoring and logging
-- [ ] Configure backup strategy
-
 ---
 
-## License
+## 📄 License
 
 MIT License - see [LICENSE](LICENSE) for details.
-
----
-
-## Contributing
-
-Contributions are welcome! Please read our contributing guidelines before submitting PRs.
 
 ---
 
